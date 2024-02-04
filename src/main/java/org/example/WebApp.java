@@ -4,15 +4,23 @@ import org.example.command.Command;
 import org.example.command.CommandType;
 import org.example.command.EmptyCommand;
 import org.example.data.DataBase;
+import org.example.data.MemoryUserRepo;
+import org.example.data.User;
+import org.example.data.UserType;
 import org.example.result.Result;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+@WebServlet("/")
 public class WebApp extends HttpServlet {
+
 
     @Override
     public void init() {
@@ -49,6 +57,7 @@ public class WebApp extends HttpServlet {
 
     private Command defineCommand(HttpServletRequest request) {
         String commandString = request.getParameter("command");
+        System.out.println("ВЫПОЛНИЛАСЬ КОМАНДА " + commandString);
         if (commandString == null || commandString.isEmpty()) {
             return new EmptyCommand();
         }

@@ -3,6 +3,7 @@ package org.example.data;
 public final class DataBase {
 
     private DataBase() {
+
     }
 
     public static void init() {
